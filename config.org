@@ -10,14 +10,37 @@
   The source code for the init.el can be found on
   [http://www.holgerschurig.de/en/emacs-init-tangle/]
 
+* Preparations
+
+** Package sources
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+;(require 'package)
+(package-initialize)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+#+END_SRC
+
+Use M-x package-refresh-contents to reload the list of packages after
+adding more to package-archives without restarting (or just
+restart)...
 
 * Aesthetics
+
 ** Disable startup screen
-#+BEGIN_SRC emacs-lisp
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq inhibit-startup-screen t)
 #+END_SRC
+
 ** More workarea
-#+BEGIN_SRC emacs-lisp
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 #+END_SRC
+
+* TODO Stuff to add [0/3]
+- [ ] Create an emacs_lisp code block by pressing a key combination
+- [ ] Open config.org fast with one key combination
