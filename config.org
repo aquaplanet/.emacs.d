@@ -1,0 +1,15 @@
+* INITIALIZE THE WORLD OF EMACS
+  This is my initialization file for Emacs. This file is bootstrapped
+  from init.el. Init.el does the following:
+  
+  - Compare config.el and config.org. If .el is older than .org the
+    .org file is tangled to config.el.
+  - Load config.el
+  - Creates a save hook that tangles this file whenever it is saved.
+
+  The source code for the init.el can be found on
+  [http://www.holgerschurig.de/en/emacs-init-tangle/]
+
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-screen t)
+#+END_SRC
