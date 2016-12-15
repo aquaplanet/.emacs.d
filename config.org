@@ -10,6 +10,14 @@
   The source code for the init.el can be found on
   [http://www.holgerschurig.de/en/emacs-init-tangle/]
 
+
+* Aesthetics
+** Disable startup screen
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-screen t)
+#+END_SRC
+** More workarea
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 #+END_SRC
