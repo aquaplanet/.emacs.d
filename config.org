@@ -77,11 +77,6 @@ restart)...
 (use-package org
   :ensure t
 #+END_SRC
-
-** Keybindings
-#+BEGIN_SRC emacs-lisp :tangle yes
-  :bind (("C-c a" . org-agenda))
-#+END_SRC
 ** Todos 
    GDT-orden för todos.
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -124,6 +119,11 @@ restart)...
        #'(lambda nil (interactive) (org-todo "STARTED")))
     (define-key org-todo-state-map "w"
        #'(lambda nil (interactive) (org-todo "WAITING")))
+#+END_SRC
+** Agenda
+   Access agenda by C-c a
+#+BEGIN_SRC emacs-lisp :tangle yes
+  :bind (("C-c a" . org-agenda))
 #+END_SRC
 
 ** End org mode
