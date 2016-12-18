@@ -70,25 +70,67 @@ restart)...
 #+END_SRC
 
 * Org-mode
+  This org-mode configuration is picked mostly from [[https://github.com/jwiegley/newartisans/blob/master/posts/2007-08-20-using-org-mode-as-a-day-planner.md][John Wiegley's
+  blog newartisans]]. It describes a good way of working.
+
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package org
   :ensure t
 #+END_SRC
 
+** Keybindings
 #+BEGIN_SRC emacs-lisp :tangle yes
   :bind (("C-c a" . org-agenda))
 #+END_SRC
-
-
+** Todos 
+   GDT-orden för todos.
 #+BEGIN_SRC emacs-lisp :tangle yes
   :config
+    (setq org-todo-keywords
+          '((sequence "TODO(t)" "DELEGATED(l)" "STARTED(s)" "WAITING(w)" "|"
+                      "DONE(d)" "CANCELLED(c)" "DEFERRED(f)")))
+#+END_SRC
+*** CANCELLED For elisp reasons Fast configuration of todo states.
+    Org mode has a better way to do this, but this shows how to work with prefix maps.
+    
+    This makes it easy to change states of todo items.
 
+    | Key     | Assign state to item |
+    |---------+----------------------|
+    | C-c x d | DONE                 |
+    | C-c x x | CANCELLED            |
+    | C-c x f | DEFERRED             |
+    | C-c x l | DELEGATE             |
+    | C-c x s | STARTED              |
+    | C-c x w | WAITING              |
+
+    The code below works as follows. Create a prefix key map called
+    org-todo-state-map and assign it C-c x keyboard command. Then add
+    the various commands to the new keymap as lambda functions.
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+  :init (define-prefix-command 'org-todo-state-map)
+  :bind (("C-c x" . org-todo-state-map))
+  :config
+    (define-key org-todo-state-map "d"
+       #'(lambda nil (interactive) (org-todo "DONE")))
+    (define-key org-todo-state-map "x"
+       #'(lambda nil (interactive) (org-todo "CANCELLED")))
+    (define-key org-todo-state-map "f"
+       #'(lambda nil (interactive) (org-todo "DEFERRED")))
+    (define-key org-todo-state-map "l"
+       #'(lambda nil (interactive) (org-todo "DELEGATED")))
+    (define-key org-todo-state-map "s"
+       #'(lambda nil (interactive) (org-todo "STARTED")))
+    (define-key org-todo-state-map "w"
+       #'(lambda nil (interactive) (org-todo "WAITING")))
 #+END_SRC
 
-
+** End org mode
 #+BEGIN_SRC emacs-lisp :tangle yes
 
 #+END_SRC
+
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 )
