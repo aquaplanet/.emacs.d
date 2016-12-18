@@ -69,7 +69,30 @@ restart)...
 )
 #+END_SRC
 
+* Org-mode
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package org
+  :ensure t
+#+END_SRC
 
+#+BEGIN_SRC emacs-lisp :tangle yes
+  :bind (("C-c a" . org-agenda))
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+  :config
+
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+)
+#+END_SRC
 * TODO Stuff to add [0/3]
 - [ ] Create an emacs_lisp code block by pressing a key combination
 - [ ] Open config.org fast with one key combination
