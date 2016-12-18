@@ -120,10 +120,29 @@ restart)...
     (define-key org-todo-state-map "w"
        #'(lambda nil (interactive) (org-todo "WAITING")))
 #+END_SRC
+** CANCELLED Capture 
+#+BEGIN_SRC emacs-lisp :tangle yes
+  :bind (("C-c c" . org-capture))
+  :config
+  (setq org-default-notes-file "notes.org")
+  (setq org-capture-templates
+        '(("t")))
+
+
+
+#+END_SRC
+   
 ** Agenda
    Access agenda by C-c a
 #+BEGIN_SRC emacs-lisp :tangle yes
   :bind (("C-c a" . org-agenda))
+#+END_SRC
+
+   Put the files in ~/org.
+#+BEGIN_SRC emacs-lisp :tangle yes
+  :config
+    (setq org-directory "~/org"
+          org-agenda-files (list org-directory))
 #+END_SRC
 
 ** End org mode
