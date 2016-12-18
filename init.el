@@ -6,10 +6,10 @@
 (package-initialize)
 
 (defun my-tangle-section-canceled ()
-  "Return t if the current section header was CANCELED, else nil."
+  "Return t if the current section header was CANCELLED, else nil."
   (save-excursion
     (if (re-search-backward "^\\*+\\s-+\\(.*?\\)?\\s-*$" nil t)
-        (string-prefix-p "CANCELED" (match-string 1))
+        (string-prefix-p "CANCELLED" (match-string 1))
       nil)))
 
 (defun my-tangle-config-org (orgfile elfile)
