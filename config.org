@@ -132,6 +132,15 @@ restart)...
 
 #+END_SRC
    
+** Archiving
+#+BEGIN_SRC emacs-lisp :tangle yes
+    :init
+      (defun my-org-archive-done-tasks ()
+        (interactive)
+        (org-map-entries 'org-archive-subtree "/DONE" 'file))
+     :config
+       (setq org-archive-location "~/org/archive.org::datetree/* Finished Tasks")
+#+END_SRC
 ** Agenda
    Access agenda by C-c a
 #+BEGIN_SRC emacs-lisp :tangle yes
