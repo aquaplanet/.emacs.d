@@ -67,6 +67,11 @@ restart)...
   :ensure t)
 #+END_SRC
 
+* Misc
+** Dangerous commands
+#+BEGIN_SRC emacs-lisp :tangle yes
+(put 'erase-buffer 'disabled nil)
+#+END_SRC
 
 * TODO Stuff to add [0/3]
 - [ ] Create an emacs_lisp code block by pressing a key combination
