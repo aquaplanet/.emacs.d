@@ -44,7 +44,6 @@ restart)...
 #+END_SRC
 
 * Aesthetics
-
 ** Disable startup screen
 
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -56,6 +55,45 @@ restart)...
 #+BEGIN_SRC emacs-lisp :tangle yes
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+#+END_SRC
+
+* HTML/CSS/XML
+** Tweaking to nXML-mode
+   När du skriver </ så vill du givetvis ha ett avslut.
+
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   (setq nxml-slash-auto-complete-flag t) 
+   #+END_SRC
+
+
+** Emmet
+Emmet är en fantastiskt mod till många texteditorer som gör det
+extremt enkelt att ändra i XML-filer. Eller som de beskriver själva:
+"Ett sätt skapa HTML med CSS-selectorer. Skriver du t.ex. nedan och
+trycker på C-j så får du det du ser under
+
+html>head>title
+
+#+BEGIN_SRC html :tangle no
+<html>
+  <head>
+    <title>
+    </title>
+   </head>
+</body>
+#+END_SRC
+
+Det finns mycket mer till Emmet, men just nu är det vad jag kan. Läs
+mer på [[https://github.com/smihica/emmet-mode][Github-sidan för Emmet-mode]].
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package emmet-mode
+  :ensure t
+  :config
+    (add-hook 'sgml-mode-hook 'emmet-mode)
+    (add-hook 'css-mode-hook  'emmet-mode)
+    (add-hook 'nxml-mode-hook  'emmet-mode)
+)
 #+END_SRC
 
 * Magit
