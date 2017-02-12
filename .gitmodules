@@ -1,0 +1,3 @@
+[submodule "noctilux-theme"]
+	path = noctilux-theme
+	url = https://github.com/sjrmanning/noctilux-theme.git
