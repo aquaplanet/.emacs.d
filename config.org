@@ -119,6 +119,14 @@ mer på [[https://github.com/smihica/emmet-mode][Github-sidan för Emmet-mode]].
 #+BEGIN_SRC emacs-lisp :tangle yes
 (put 'erase-buffer 'disabled nil)
 #+END_SRC
+** Mac-specifikt
+  Make Cmd the meta key to free alt for being able to write [ and {
+#+BEGIN_SRC emacs-lisp :tangle yes
+(when (eq system-type 'darwin)
+ (setq ns-alternate-modifier 'none)
+ (setq ns-command-modifier 'meta)
+ (setq ns-right-alternate-modifier 'none))
+#+END_SRC
 
 * TODO Stuff to add [0/3]
 - [ ] Create an emacs_lisp code block by pressing a key combination
