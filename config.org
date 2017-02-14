@@ -96,6 +96,15 @@ mer på [[https://github.com/smihica/emmet-mode][Github-sidan för Emmet-mode]].
 )
 #+END_SRC
 
+* Python
+** Indentation
+#+BEGIN_SRC emacs-lisp :tangle yes
+(add-hook 'python-mode-hook
+	  (function (lambda ()
+		      (setq indent-tabs-mode nil
+			    tab-width 4
+			    python-indent-offset 4))))
+#+END_SRC
 * Magit
   Magit is THE git client for Emacs. It is on Github: [https://github.com/magit/magit].
 
@@ -114,3 +123,4 @@ mer på [[https://github.com/smihica/emmet-mode][Github-sidan för Emmet-mode]].
 * TODO Stuff to add [0/3]
 - [ ] Create an emacs_lisp code block by pressing a key combination
 - [ ] Open config.org fast with one key combination
+- [ ] Window movement and resizing
