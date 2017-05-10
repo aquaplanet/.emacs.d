@@ -44,6 +44,11 @@ restart)...
 #+END_SRC
 
 * Aesthetics
+** Theme
+#+BEGIN_SRC emacs-lisp :tangle yes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/noctilux-theme")
+(load-theme 'noctilux t)
+#+END_SRC
 ** Disable startup screen
 
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -57,6 +62,54 @@ restart)...
 (tool-bar-mode -1)
 #+END_SRC
 
+** Font
+
+* Misc
+** Dangerous commands
+#+BEGIN_SRC emacs-lisp :tangle yes
+(put 'erase-buffer 'disabled nil)
+#+END_SRC
+** Mac-specifikt
+  Make Cmd the meta key to free alt for being able to write [ and {
+#+BEGIN_SRC emacs-lisp :tangle yes
+(when (eq system-type 'darwin)
+ (setq ns-alternate-modifier 'none)
+ (setq ns-command-modifier 'meta)
+ (setq ns-right-alternate-modifier 'none))
+#+END_SRC
+** Popup
+   Used by auto-complete
+   #+BEGIN_SRC emacs-lisp :tangle yes
+     (use-package popup
+       :ensure t
+       :config
+       (eval-after-load "cider"
+         '(define-key cider-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc))
+     )
+   #+END_SRC
+** Auto-complete
+   #+BEGIN_SRC emacs-lisp :tangle yes
+     (use-package auto-complete
+       :ensure t
+       :config
+       (setq ac-delay 0.0)
+       (setq ac-quick-help-delay 0.5)
+       (ac-config-default)
+     )
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp :tangle yes
+     (use-package ac-nrepl
+       :ensure t
+       :config
+       (setq nrepl-popup-stacktraces nil)
+       (add-hook 'cider-mode-hook 'ac-nrepl-setup)
+       (add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
+       (add-to-list 'ac-modes 'cider-mode)
+       (add-to-list 'ac-modes 'cider-repl-mode)
+     )
+
+   #+END_SRC
 * HTML/CSS/XML
 ** Tweaking to nXML-mode
    När du skriver </ så vill du givetvis ha ett avslut.
@@ -114,20 +167,55 @@ mer på [[https://github.com/smihica/emmet-mode][Github-sidan för Emmet-mode]].
   :ensure t)
 #+END_SRC
 
-* Misc
-** Dangerous commands
-#+BEGIN_SRC emacs-lisp :tangle yes
-(put 'erase-buffer 'disabled nil)
-#+END_SRC
-** Mac-specifikt
-  Make Cmd the meta key to free alt for being able to write [ and {
-#+BEGIN_SRC emacs-lisp :tangle yes
-(when (eq system-type 'darwin)
- (setq ns-alternate-modifier 'none)
- (setq ns-command-modifier 'meta)
- (setq ns-right-alternate-modifier 'none))
-#+END_SRC
+* Clojure
+  My settings is mostly taken from [[http://fgiasson.com/blog/index.php/2014/05/22/my-optimal-gnu-emacs-settings-for-developing-clojure-so-far/][some "optimal" settings blog post
+  on the Internet]]
+** Paredit
+   #+BEGIN_SRC emacs-lisp :tangle yes
+     (use-package paredit
+       :ensure t
+       :config
+       (add-hook 'clojure-mode-hook 'paredit-mode)
+       (show-paren-mode 1)
+     )
 
+   #+END_SRC
+** Cider
+   IDE for Emacs Clojure, like Slime for Elisp.
+   #+BEGIN_SRC emacs-lisp :tangle yes
+     (use-package cider
+       :ensure t
+       :config
+       (add-hook 'clojure-mode-hook 'turn-on-eldoc-mode)
+     )
+   #+END_SRC
+** Clojure-mode
+   Major mode for Clojure.
+
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   (use-package clojure-mode
+       :ensure t
+   )
+   #+END_SRC
+
+** Rainbow-delimiters
+   Highlight nested parens, brackets, braces a different color at each
+   depth – This is really handy to visually see where you are with
+   your parenthesis.
+
+   #+BEGIN_SRC emacs-lisp :tangle yes
+     (use-package rainbow-delimiters
+       :ensure t
+       :config
+       (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+     )
+   #+END_SRC
+** Rainbow-mode
+   #+BEGIN_SRC emacs-lisp :tangle yes
+   (use-package rainbow-mode
+       :ensure t
+   )
+    #+END_SRC
 * TODO Stuff to add [0/3]
 - [ ] Create an emacs_lisp code block by pressing a key combination
 - [ ] Open config.org fast with one key combination
