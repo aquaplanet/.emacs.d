@@ -137,6 +137,18 @@ restart)...
      )
 
    #+END_SRC
+** Backup files
+   Remove backup files from directories and instead save the to
+   ~/.emacs.d/saves. Note that I create the backup directory if it
+   doesn't exists...I figured out this myself how to do it in LISP!
+
+   #+BEGIN_SRC emacs-lisp :tangle yes 
+     (setq backup-directory-alist '(("." . "~/.emacs.d/saves")))
+
+     (if (not (file-exists-p (cdar backup-directory-alist)))
+         (make-directory "~/.emacs.d/saves"))
+
+   #+END_SRC
 * HTML/CSS/XML
 ** Tweaking to nXML-mode
    När du skriver </ så vill du givetvis ha ett avslut.
@@ -243,9 +255,9 @@ mer på [[https://github.com/smihica/emmet-mode][Github-sidan för Emmet-mode]].
        :ensure t
    )
     #+END_SRC
-* TODO Stuff to add [0/5]
+* TODO Stuff to add [1/5]
 - [ ] Create an emacs_lisp code block by pressing a key combination
 - [ ] Open config.org fast with one key combination
 - [ ] Window movement and resizing
 - [ ] Sticky sessions - open previous files and directories
-- [ ] No backup files cluttering the fileystem
+- [X] No backup files cluttering the fileystem
