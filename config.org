@@ -10,6 +10,30 @@
   The source code for the init.el can be found on
   [http://www.holgerschurig.de/en/emacs-init-tangle/]
 
+* Ideas and visions
+** Evil mode is the best
+   Vim is better for editing than Emacs, but Emacs is better than Vim
+   due to the customizability. What is the best? Both!
+** Pleasing to the eyes
+   Use a greate theme and don't be affraid of unicode characters -
+   they are greate information on a small space and pleasing to the
+   eyes.
+** Easy to access stuff
+   You should not really think how to access something, you should
+   just access it.
+** Fast
+   Emacs should load fast and feel responsive. Fast means also that
+   one should quickly be able to make changes to it.
+
+   Example of this is the configuration. Edit config.el and
+   restart...Emacs will reload the configuration and do all
+   org-mode-babel stuff for me. This might be too slow in the future,
+   then make it so that it uses a build system in the CLI (Makefile).
+
+   You should load all modules on-demand when it is needed.
+** Inspiration
+   [[https://github.com/hlissner/doom-emacs/tree/develop][Doom Emacs]]
+
 * Preparations
 ** Package sources
 
@@ -65,6 +89,9 @@ restart)...
 ** Font
 
 * Misc
+  What is in here is stuff that I didn't feel needed a big and deep
+  caption of its own. Preferably this should be a small caption. If
+  something here goes out of hand, move it to its own area.
 ** Dangerous commands
 #+BEGIN_SRC emacs-lisp :tangle yes
 (put 'erase-buffer 'disabled nil)
@@ -216,7 +243,9 @@ mer på [[https://github.com/smihica/emmet-mode][Github-sidan för Emmet-mode]].
        :ensure t
    )
     #+END_SRC
-* TODO Stuff to add [0/3]
+* TODO Stuff to add [0/5]
 - [ ] Create an emacs_lisp code block by pressing a key combination
 - [ ] Open config.org fast with one key combination
 - [ ] Window movement and resizing
+- [ ] Sticky sessions - open previous files and directories
+- [ ] No backup files cluttering the fileystem
