@@ -30,3 +30,12 @@ My part of the code is The Unlicense license.
     OTHER DEALINGS IN THE SOFTWARE.
 
     For more information, please refer to <http://unlicense.org>
+
+# To come
+I want a killer Emacs configuration:
+- Good font
+- Spacemacs look alike window with all keys to press
+- Notepad++ style where one can close the program and all text including Scratch is still there
+- Evil mode
+- Magit
+- Org mode
